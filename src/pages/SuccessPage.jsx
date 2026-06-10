@@ -1,17 +1,20 @@
 import React from "react";
 import { CheckCircle2, ShieldAlert, ArrowRight, ClipboardCopy } from "lucide-react";
+import logoImg from "../assets/v2_logo.jfif";
 
 export default function SuccessPage({ submittedData, onReset }) {
   return (
-    <div className="min-h-screen bg-brand-surface py-12 px-4 sm:px-6 lg:px-8 flex flex-col justify-between">
-      {/* Header Bar */}
-      <header className="max-w-3xl w-full mx-auto flex justify-between items-center mb-8">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-brand-primary flex items-center justify-center text-white font-black text-lg shadow-sm">
-            V2
-          </div>
-          <span className="font-extrabold text-brand-text text-xl tracking-tight">
-            V2 <span className="text-brand-primary font-medium">Consulting</span>
+    <div className="min-h-screen bg-brand-surface pt-3 pb-8 px-4 sm:px-6 lg:px-8 flex flex-col justify-between">
+      {/* Header Bar - positioned at the top left */}
+      <header className="max-w-7xl w-full mx-auto flex justify-start items-center mb-2">
+        <div className="flex items-center gap-4">
+          <img 
+            src={logoImg} 
+            alt="V2 Startup Incubation & Consulting" 
+            className="h-16 w-auto rounded-xl object-contain shadow-sm border border-brand-border/30"
+          />
+          <span className="text-2xl font-black text-brand-text tracking-tight font-serif">
+          <span className="text-brand-gold font-normal italic">Consulting</span>
           </span>
         </div>
       </header>

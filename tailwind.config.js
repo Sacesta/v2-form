@@ -8,19 +8,21 @@ export default {
     extend: {
       colors: {
         brand: {
-          primary: '#2563EB',     // McKinsey Royal Blue
-          secondary: '#1E40AF',   // Deep Blue
-          hover: '#1D4ED8',       // Bright interactive blue
-          light: '#EFF6FF',       // Soft blue surface
-          background: '#FFFFFF',  // Clean background
-          surface: '#F8FAFC',     // Modern cool-gray surface
-          text: '#0F172A',        // Slate-900 high readability
-          muted: '#475569',       // Slate-600 secondary text
-          border: '#E2E8F0',      // Light border
+          primary: '#030B18',     // Midnight Obsidian
+          secondary: '#B89047',   // V2 Metallic Gold
+          gold: '#B89047',        // V2 Accent Gold
+          hover: '#1E293B',       // Dark hover slate
+          light: '#F5F2EB',       // Soft warm cream highlight
+          background: '#F4F0E6',  // Warm beige/cream background
+          surface: '#FAF9F5',     // Warm ivory card surface
+          text: '#030B18',        // Midnight body text
+          muted: '#5C6479',       // Slate-gray muted text
+          border: '#E3DCC8',      // Warm champagne border
         }
       },
       fontFamily: {
         sans: ['Inter', 'Outfit', 'sans-serif'],
+        serif: ['"Playfair Display"', 'Georgia', 'serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.3s ease-out forwards',

@@ -123,7 +123,7 @@ export const FORM_STEPS = {
         type: "textarea",
         placeholder: "e.g., Enterprise finance controllers in mid-sized logistics and retail firms in North America...",
         maxLength: 200,
-        required: true
+        required: false
       }
     ]
   },

@@ -21,7 +21,7 @@ export default function Step6Target({ formData, updateFormData, errors }) {
     <div className="space-y-6 animate-slide-in">
       <div>
         <label htmlFor="target_audience" className="block text-sm font-semibold text-brand-text mb-2">
-          Target Customer Profile <span className="text-red-500">*</span>
+          Target Customer Profile <span className="text-slate-400 font-normal text-xs">(Optional)</span>
         </label>
         
         <div className="relative">
@@ -30,7 +30,6 @@ export default function Step6Target({ formData, updateFormData, errors }) {
             name="target_audience"
             rows="4"
             maxLength={maxLength}
-            required
             value={currentValue}
             onChange={handleChange}
             placeholder={fieldConfig.placeholder}

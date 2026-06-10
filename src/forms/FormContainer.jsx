@@ -86,8 +86,12 @@ export default function FormContainer({ onSubmitSuccess }) {
         }
         break;
       case 6:
-        const targetErr = validateTextarea(formData.target_audience, "Target Audience", 200);
-        if (targetErr) stepErrors.target_audience = targetErr;
+        if (formData.target_audience && formData.target_audience.trim().length > 0) {
+          const targetErr = validateTextarea(formData.target_audience, "Target Audience", 200);
+          if (targetErr && targetErr.includes("too long")) {
+            stepErrors.target_audience = targetErr;
+          }
+        }
         break;
       case 7:
         if (!formData.assets_ready) {
@@ -168,7 +172,7 @@ export default function FormContainer({ onSubmitSuccess }) {
   const stepMeta = FORM_STEPS[currentStep];
 
   return (
-    <div ref={formCardRef} className="w-full max-w-2xl bg-white border border-brand-border rounded-3xl shadow-premium p-6 md:p-10 relative overflow-hidden transition-all duration-300">
+    <div ref={formCardRef} className="w-full max-w-2xl bg-brand-surface border border-brand-border rounded-3xl shadow-premium p-6 md:p-10 relative overflow-hidden transition-all duration-300">
       
       {/* Top Progress & Step Indicators */}
       <div className="space-y-6 mb-8">
@@ -189,7 +193,7 @@ export default function FormContainer({ onSubmitSuccess }) {
 
       {/* Active Step Header Text */}
       <div className="mb-8 hidden md:block">
-        <h2 className="text-2xl font-extrabold text-brand-text leading-tight tracking-tight">
+        <h2 className="text-2xl font-black text-brand-text leading-tight tracking-tight font-serif">
           {stepMeta.question}
         </h2>
         {stepMeta.description && (
