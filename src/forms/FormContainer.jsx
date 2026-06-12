@@ -92,7 +92,18 @@ export default function FormContainer({ onSubmitSuccess, openPrivacy }) {
       route: answers.need,
       routingTag: routingTags[answers.need],
       answers: answers,
-      answerLabels: labels
+      answerLabels: labels,
+      // Flat fields to ensure Make.com/Google Sheets webhooks can read them easily:
+      name: answers.contact?.name || "",
+      email: answers.contact?.email || "",
+      phone: answers.contact?.phone || "",
+      current_need: labels.need || "",
+      description: answers.description || "",
+      support_area: labels.dynamic || "",
+      business_stage: labels.stage || "",
+      target_customer: labels.customer || "",
+      assets_ready: labels.readiness || "",
+      timeline: labels.timeline || ""
     };
     try { localStorage.setItem("v2_latest_enquiry", JSON.stringify(payload)); } catch (e) {}
 
