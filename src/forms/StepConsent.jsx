@@ -4,7 +4,7 @@ export default function StepConsent({ answers, labels, openPrivacy, setAnswers }
   const data = [
     { label: "Name", value: answers.contact?.name },
     { label: "Email", value: answers.contact?.email },
-    { label: "Phone", value: (answers.contact?.phonePrefix && answers.contact?.phone) ? `${answers.contact.phonePrefix} ${answers.contact.phone}` : answers.contact?.phone },
+    { label: "Phone", value: answers.contact?.phone },
     { label: "Current need", value: labels.need },
     { label: "Description", value: answers.description },
     { label: "Primary support area", value: labels.dynamic },

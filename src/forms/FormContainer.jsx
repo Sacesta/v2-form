@@ -52,9 +52,9 @@ export default function FormContainer({ onSubmitSuccess, openPrivacy }) {
     if (currentKey === "contact") {
       const { name, email, phone } = answers.contact || {};
       const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email || "");
-      const phoneOk = /^[+()\-\s0-9]{7,20}$/.test(phone || "");
+      const phoneOk = /^\+91\s?[0-9]{10}$/.test(phone || "");
       if (!name || !name.trim() || !emailOk || !phoneOk) {
-        setError("Please enter your name, a valid email address, and a valid phone number.");
+        setError("Please enter your name, a valid email address, and a valid phone number starting with +91 followed by 10 digits.");
         return false;
       }
       return true;
@@ -89,7 +89,7 @@ export default function FormContainer({ onSubmitSuccess, openPrivacy }) {
     const payload = {
       name: answers.contact?.name || "",
       email: answers.contact?.email || "",
-      phone: (answers.contact?.phonePrefix && answers.contact?.phone) ? `${answers.contact.phonePrefix} ${answers.contact.phone}` : answers.contact?.phone || "",
+      phone: answers.contact?.phone || "",
       routingTag: routingTags[answers.need],
       current_need: labels.need || "",
       description: answers.description || "",
