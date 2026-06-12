@@ -1,14 +1,11 @@
-import { SERVICE_MAPPING } from "../constants/formConstants";
-
 /**
  * Submits the intake onboarding form data via a REST API POST request.
  * 
- * @param {object} formData - State of the onboarding form fields
+ * @param {object} payload - Pre-constructed JSON payload from the form container
  * @returns {Promise<object>} - Response payload
  */
-export const submitIntakeData = async (formData) => {
-  // Use VITE_API_ENDPOINT if set, otherwise fallback to an echo REST API endpoint
-  // Resolve target endpoint - strictly VITE_WEBHOOK_URL
+export const submitIntakeData = async (payload) => {
+  // Use VITE_WEBHOOK_URL if set
   const apiEndpoint = import.meta.env?.VITE_WEBHOOK_URL;
 
   const isDefaultOrEmpty = !apiEndpoint || 
@@ -16,28 +13,14 @@ export const submitIntakeData = async (formData) => {
                            apiEndpoint.trim() === "";
   
   if (isDefaultOrEmpty) {
-    console.error("V2 Startup Consulting: VITE_WEBHOOK_URL is not configured.");
-    throw new Error("Form submission is disabled. Please configure VITE_WEBHOOK_URL.");
+    console.warn("V2 Startup Consulting: VITE_WEBHOOK_URL is not configured. Falling back to Email/WhatsApp delivery only.");
+    // Return early without throwing an error to enable smooth zero-backend flow
+    return {
+      success: true,
+      zeroBackend: true,
+      payload: payload
+    };
   }
-
-  // Map Step 2 selection to backend service names (IGNITE, BLUEPRINT BUILD, etc.)
-  const serviceMapping = SERVICE_MAPPING[formData.current_need] || "BESPOKE CONSULTANCY";
-
-  // Build the strictly specified payload structure
-  const payload = {
-    name: formData.name || "",
-    email: formData.email || "",
-    phone: formData.phone || "",
-    current_need: formData.current_need || "",
-    service_mapping: serviceMapping,
-    idea_description: formData.idea_description || "",
-    help_needed: formData.help_needed || "",
-    business_stage: formData.business_stage || "",
-    target_audience: formData.target_audience || "",
-    assets_ready: formData.assets_ready || "",
-    timeline: formData.timeline || "",
-    submitted_at: new Date().toISOString()
-  };
 
   try {
     const response = await fetch(apiEndpoint, {

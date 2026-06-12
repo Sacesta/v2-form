@@ -1,0 +1,649 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Tell V2 Startup Incubation Consultancy what you are building or what business decision you need to make. A short enquiry maps your requirement to the right advisory path.">
+  <meta property="og:title" content="V2 Startup Incubation Consultancy | Start an Enquiry">
+  <meta property="og:description" content="Decide. Build. Raise. Fee-only startup advisory led personally by Mohit Arora, Bangalore.">
+  <meta property="og:type" content="website">
+  <title>V2 Startup Incubation Consultancy | Start an Enquiry</title>
+  <style>
+    :root{
+      --ink:#16181D; --ink2:#1F232B; --ink3:#262B34;
+      --orange:#E8490F; --orange2:#FF6B33; --teal:#00A896; --teal2:#36CDBB;
+      --white:#fff; --paper:#F7F8FA; --muted:#6A6E76; --line:#E3E5E9;
+      --danger:#B3261E; --ok:#0E7A5F; --shadow:0 20px 55px rgba(0,0,0,.20);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;color:var(--ink);background:#fff}
+    a{color:inherit}
+    .site-header{
+      position:sticky;top:0;z-index:20;background:rgba(22,24,29,.97);backdrop-filter:blur(14px);
+      color:#fff;border-bottom:1px solid rgba(232,73,15,.45);
+    }
+    .nav{max-width:1240px;margin:auto;padding:10px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+    .logo-chip{background:#fff;border-radius:10px;padding:4px;display:grid;place-items:center}
+    .logo-chip img{width:52px;height:52px;object-fit:contain;display:block}
+    .brand-text b{display:block;letter-spacing:.08em}
+    .brand-text small{color:#C9CCD2}
+    .links{display:flex;align-items:center;gap:22px}
+    .links a{text-decoration:none;font-size:14px;color:#DFE1E5}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:10px;padding:13px 19px;border:1px solid transparent;font-weight:750;cursor:pointer;text-decoration:none;font-size:15px}
+    .btn-primary{background:linear-gradient(135deg,var(--orange2),var(--orange));color:#fff;box-shadow:0 8px 28px rgba(232,73,15,.30)}
+    .btn-teal{background:linear-gradient(135deg,var(--teal2),var(--teal));color:#06241F;box-shadow:0 8px 28px rgba(0,168,150,.25)}
+    .btn-outline{border-color:var(--teal);color:#fff;background:transparent}
+    .hero{background:
+      radial-gradient(circle at 70% 8%,rgba(232,73,15,.16),transparent 30%),
+      radial-gradient(circle at 12% 85%,rgba(0,168,150,.12),transparent 32%),
+      linear-gradient(130deg,#14161B,#1E222A 62%,#101216);color:#fff}
+    .hero-inner{max-width:1240px;margin:auto;padding:76px 24px 72px;display:grid;grid-template-columns:1.02fr .98fr;gap:60px;align-items:center}
+    .eyebrow{color:var(--teal2);text-transform:uppercase;letter-spacing:.14em;font-size:13px;font-weight:800}
+    h1{font-family:Georgia,serif;font-size:clamp(40px,5.6vw,68px);line-height:1.04;margin:18px 0 22px;font-weight:500}
+    h1 span{color:var(--orange2)}
+    .hero-copy{font-size:19px;line-height:1.6;color:#D8DADE;max-width:650px}
+    .hero-note{margin:24px 0 0;color:#fff;font-weight:600}
+    .hero-sub{margin:6px 0 0;color:#AEB2BA;font-size:14px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+    .preview{background:linear-gradient(180deg,#23272F,#181B21);border:1px solid rgba(0,168,150,.45);border-radius:20px;padding:22px;box-shadow:var(--shadow)}
+    .preview-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+    .preview-top b{color:var(--teal2)}
+    .preview-top span{color:#AEB2BA;font-size:13px}
+    .progress{height:7px;background:#3A3F49;border-radius:99px;overflow:hidden}
+    .progress span{display:block;width:24%;height:100%;background:linear-gradient(90deg,var(--orange),var(--orange2))}
+    .preview-q{margin-top:18px;padding-top:18px;border-top:1px solid #383D46;color:#EDEEF0}
+    .preview-option{border:1px solid rgba(0,168,150,.5);border-radius:999px;padding:10px 13px;margin-top:9px;color:#DDE0E4;font-size:13px}
+    .section{padding:72px 24px}
+    .section.alt{background:var(--paper)}
+    .wrap{max-width:1240px;margin:auto}
+    .section h2{font-family:Georgia,serif;font-size:clamp(32px,4vw,48px);text-align:center;margin:0 0 14px;font-weight:500}
+    .section-lead{text-align:center;color:var(--muted);max-width:760px;margin:0 auto 36px;line-height:1.55}
+    .service-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+    .service{border:1px solid var(--line);border-radius:16px;padding:22px;background:#fff;min-height:230px;box-shadow:0 10px 26px rgba(20,22,26,.06);border-top:4px solid var(--teal)}
+    .service .num{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#E2F6F3;color:#066;font-weight:800}
+    .service h3{font-size:18px;margin:17px 0 10px}
+    .service p{font-size:14px;line-height:1.5;color:var(--muted)}
+    .service.bespoke{border-top-color:var(--orange);background:linear-gradient(180deg,#fff,#FFF3EE)}
+    .service.bespoke .num{background:#FDE4DA;color:#9A2F08}
+    .steps-grid,.benefit-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .mini{padding:22px;text-align:center}
+    .mini .icon{font-size:28px;color:var(--orange)}
+    .mini h3{margin:10px 0 7px}
+    .mini p{color:var(--muted);font-size:14px;line-height:1.45}
+    .enquiry-shell{background:linear-gradient(135deg,#14161B,#23272F);padding:72px 24px}
+    .enquiry-wrap{max-width:980px;margin:auto}
+    .chat-card{background:#fff;border-radius:22px;box-shadow:var(--shadow);overflow:hidden}
+    .chat-head{background:var(--ink);color:#fff;padding:20px 24px}
+    .chat-head-row{display:flex;justify-content:space-between;gap:18px;align-items:center}
+    .chat-head h2{font-size:22px;margin:0}
+    .step-label{font-size:13px;color:#C9CCD2}
+    .chat-progress{height:6px;background:#3A3F49;margin-top:15px;border-radius:99px;overflow:hidden}
+    .chat-progress span{display:block;height:100%;width:12.5%;background:linear-gradient(90deg,var(--orange),var(--orange2));transition:width .25s}
+    form{padding:28px}
+    .screen{display:none}
+    .screen.active{display:block}
+    .q-title{font-size:25px;margin:0 0 7px}
+    .q-help{color:var(--muted);margin:0 0 23px;line-height:1.5}
+    .fields{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    label{font-size:13px;font-weight:700;display:block;margin-bottom:7px}
+    input,textarea{width:100%;border:1px solid #CFD1D5;border-radius:10px;padding:13px 14px;font:inherit}
+    input:focus,textarea:focus{outline:3px solid rgba(0,168,150,.18);border-color:var(--teal)}
+    textarea{min-height:130px;resize:vertical}
+    .choice-list{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+    .choice-button{
+      border:1px solid #D8D9DC;background:#fff;border-radius:12px;padding:15px;text-align:left;
+      cursor:pointer;transition:.15s;font-size:15px;line-height:1.4;min-height:62px
+    }
+    .choice-button:hover{border-color:var(--teal);transform:translateY(-1px)}
+    .choice-button.selected{border-color:var(--orange);background:#FFF3EE;box-shadow:0 0 0 2px rgba(232,73,15,.16)}
+    .error{color:var(--danger);font-size:13px;margin-top:13px;min-height:18px}
+    .nav-row{display:flex;justify-content:space-between;gap:12px;margin-top:25px}
+    .back{background:#EEE;border-color:#DDD}
+    .next{margin-left:auto}
+    .consent{display:flex;gap:10px;align-items:flex-start;background:var(--paper);padding:14px;border-radius:10px;font-size:13px;line-height:1.45}
+    .consent input{width:auto;margin-top:3px}
+    .summary{background:var(--paper);border-radius:12px;padding:18px;white-space:pre-wrap;font-size:13px;line-height:1.55}
+    .success{text-align:center;padding:30px 10px}
+    .success .tick{font-size:54px;color:var(--ok)}
+    .send-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+    .send-note{color:var(--muted);font-size:13px;margin-top:16px;line-height:1.5}
+    .notice{background:#FFF3EE;border:1px solid #F2B49B;border-radius:14px;padding:18px 20px;line-height:1.5;margin-top:32px}
+    footer{background:var(--ink);color:#C9CCD2;padding:28px 24px;border-top:3px solid var(--orange)}
+    .footer-inner{max-width:1240px;margin:auto;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:13px}
+    .footer-inner b{color:#fff;letter-spacing:.04em}
+    dialog{border:none;border-radius:16px;max-width:620px;padding:0;box-shadow:var(--shadow)}
+    dialog::backdrop{background:rgba(0,0,0,.55)}
+    .modal-body{padding:25px}
+    .modal-body h3{margin-top:0}
+    .modal-body p{color:var(--muted);line-height:1.55}
+    @media(max-width:1050px){
+      .hero-inner{grid-template-columns:1fr}
+      .service-grid{grid-template-columns:repeat(2,1fr)}
+      .service:last-child{grid-column:1/-1}
+      .steps-grid,.benefit-grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:720px){
+      .links a:not(.btn){display:none}
+      .brand-text{display:none}
+      .hero-inner{padding-top:55px}
+      .service-grid,.steps-grid,.benefit-grid,.fields,.choice-list{grid-template-columns:1fr}
+      .service:last-child{grid-column:auto}
+      form{padding:20px}
+      .q-title{font-size:22px}
+      .choice-button{min-height:48px}
+      .nav-row{position:sticky;bottom:0;background:#fff;padding-top:12px}
+    }
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="#">
+      <span class="logo-chip"><img src="[IMAGE]" alt="V2 Startup Incubation Consultancy logo"></span>
+      <span class="brand-text"><b>V2 STARTUP</b><small>Incubation Consultancy</small></span>
+    </a>
+    <div class="links">
+      <a href="#services">Services</a><a href="#how">How It Works</a><a href="#why">Why V2</a>
+      <a class="btn btn-primary" href="#enquiry">Start Enquiry</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="eyebrow">Decide. Build. Raise. &nbsp;â€¢&nbsp; Fee-only advisory &nbsp;â€¢&nbsp; Bangalore</div>
+        <h1>Tell us what you are building, or what <span>business decision</span> you need to make.</h1>
+        <p class="hero-copy">A short intake of about two minutes helps V2 understand your requirement and identify the right advisory path. No preparation needed.</p>
+        <p class="hero-note">One-on-one advisory led personally by Mohit Arora.</p>
+        <p class="hero-sub">33+ years of commercial leadership. Six-time entrepreneur. No equity. No success fee. No cheerleading.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#enquiry">Start Enquiry â†’</a>
+          <a class="btn btn-teal" href="https://wa.me/918431549220?text=Hello%20V2%2C%20I%20would%20like%20to%20discuss%20a%20requirement." target="_blank" rel="noopener">WhatsApp V2</a>
+          <a class="btn btn-outline" href="mailto:v2-consulting@hotmail.com?subject=Discovery%20Call%20Request">Book Discovery Call</a>
+        </div>
+      </div>
+      <aside class="preview" aria-label="Enquiry assistant preview">
+        <div class="preview-top"><b>V2 Enquiry Assistant</b><span>About 2 minutes</span></div>
+        <div class="progress"><span></span></div>
+        <div class="preview-q"><b>Q1 â€” Contact details</b></div>
+        <div class="preview-q">
+          <b>Q2 â€” Which statement best describes your current need?</b>
+          <div class="preview-option">Validate an idea</div>
+          <div class="preview-option">Build a structured business</div>
+          <div class="preview-option">Improve an existing startup</div>
+          <div class="preview-option">Become investor-ready</div>
+          <div class="preview-option">Bespoke consulting</div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <div class="wrap">
+      <h2>Choose the path that best matches your need</h2>
+      <p class="section-lead">You do not need to know the name of a V2 package. Select the outcome closest to your current requirement and the enquiry assistant will do the rest.</p>
+      <div class="service-grid">
+        <article class="service"><span class="num">1</span><h3>Validate My Idea</h3><p>For early-stage founders who need an honest, evidence-based go or no-go view before committing time and money.</p></article>
+        <article class="service"><span class="num">2</span><h3>Build My Business</h3><p>For founders who need business structure, pricing, go-to-market, financial planning, and an execution roadmap.</p></article>
+        <article class="service"><span class="num">3</span><h3>Improve My Startup</h3><p>For founders already building who need sharper strategy, pricing, sales, or financial discipline.</p></article>
+        <article class="service"><span class="num">4</span><h3>Get Investor-Ready</h3><p>For pitch decks, financial models, valuation, fundraise strategy, and complete readiness preparation.</p></article>
+        <article class="service bespoke"><span class="num">5</span><h3>Bespoke Consulting</h3><p>For market studies, pricing, GTM, partner strategy, business cases, and feasibility assignments. Open to startups and established businesses.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt" id="how">
+    <div class="wrap">
+      <h2>How it works</h2>
+      <div class="steps-grid">
+        <article class="mini"><div class="icon">â‘ </div><h3>Share your details</h3><p>Tell us what you are building and what support you need. About two minutes.</p></article>
+        <article class="mini"><div class="icon">â‘¡</div><h3>V2 reviews the requirement</h3><p>Your inputs are assessed and mapped to the appropriate advisory path.</p></article>
+        <article class="mini"><div class="icon">â‘¢</div><h3>Discovery call</h3><p>A focused conversation to understand objectives, context, and constraints.</p></article>
+        <article class="mini"><div class="icon">â‘£</div><h3>Proposal and next steps</h3><p>You receive a clear scope, timeline, fee, and recommended way forward.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="enquiry-shell" id="enquiry">
+    <div class="enquiry-wrap">
+      <div class="chat-card">
+        <header class="chat-head">
+          <div class="chat-head-row"><h2>V2 Enquiry Assistant</h2><span class="step-label" id="stepLabel">Step 1</span></div>
+          <div class="chat-progress"><span id="progressBar"></span></div>
+        </header>
+
+        <form id="enquiryForm" novalidate>
+          <section class="screen active" data-key="contact">
+            <h3 class="q-title">Your contact details</h3>
+            <p class="q-help">We will use these details only to review and respond to your enquiry.</p>
+            <div class="fields">
+              <div><label for="name">Name</label><input id="name" name="name" autocomplete="name" required></div>
+              <div><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+              <div><label for="phone">Phone</label><input id="phone" name="phone" type="tel" autocomplete="tel" required></div>
+            </div>
+            <div class="error" aria-live="polite"></div>
+          </section>
+
+          <section class="screen" data-key="need">
+            <h3 class="q-title">Which statement best describes your current need?</h3>
+            <p class="q-help">Choose the closest fit. You can explain the detail later.</p>
+            <div class="choice-list">
+              <button type="button" class="choice-button" data-value="validate">I want to validate an idea before investing significant time or money.</button>
+              <button type="button" class="choice-button" data-value="build">I want to turn an idea into a structured business plan and roadmap.</button>
+              <button type="button" class="choice-button" data-value="improve">I am already building and need help improving strategy, pricing, GTM, or financials.</button>
+              <button type="button" class="choice-button" data-value="investor">I need investor-ready documents and fundraising preparation.</button>
+              <button type="button" class="choice-button" data-value="bespoke">I need custom consulting for a business, market, product, or new opportunity.</button>
+            </div>
+            <div class="error" aria-live="polite"></div>
+          </section>
+
+          <section class="screen" data-key="description">
+            <h3 class="q-title" id="descriptionTitle">Describe your idea or business in one short sentence.</h3>
+            <p class="q-help">Keep it simple. Recommended maximum: 300 characters.</p>
+            <textarea id="description" maxlength="300" placeholder="Example: We want to launch..."></textarea>
+            <div class="error" aria-live="polite"></div>
+          </section>
+
+          <section class="screen" data-key="dynamic">
+            <h3 class="q-title" id="dynamicTitle"></h3>
+            <p class="q-help">Select the area that matters most right now.</p>
+            <div class="choice-list" id="dynamicChoices"></div>
+            <div class="error" aria-live="polite"></div>
+          </section>
+
+          <section class="screen" data-key="stage">
+            <h3 class="q-title">What stage are you currently at?</h3>
+            <div class="choice-list">
+              <button type="button" class="choice-button" data-value="idea">Just an idea</button>
+              <button type="button" class="choice-button" data-value="validation">Research or validation underway</button>
+              <button type="button" class="choice-button" data-value="product">Prototype, product, or service exists</button>
+              <button type="button" class="choice-button" data-value="traction">Early users, customers, or revenue</button>
+              <button type="button" class="choice-button" data-value="incorporated">Incorporated startup preparing to scale or raise</button>
+            </div>
+            <div class="error" aria-live="polite"></div>
+          </section>
+
+          <section class="screen" data-key="customer">
+            <h3 class="q-title">Who is the intended customer or user?</h3>
+            <div class="choice-list">
+              <button type="button" class="choice-button" data-value="consumer">Individual consumers</button>
+              <button type="button" class="choice-button" data-value="small-business">Small businesses or startups</button>
+              <button type="button" class="choice-button" data-value="enterprise">Large companies or institutions</button>
+              <button type="button" class="choice-button" data-value="public-sector">Government, education, or non-profits</button>
+              <button type="button" class="choice-button" data-value="unknown">Not sure yet</button>
+            </div>
+            <div class="error" aria-live="polite"></div>
+          </section>
+
+          <section class="screen" data-key="readiness">
+            <h3 class="q-title">What do you already have ready?</h3>
+            <div class="choice-list">
+              <button type="button" class="choice-button" data-value="nothing">Only an idea or nothing yet</button>
+              <button type="button" class="choice-button" data-value="research">Notes, research, or customer feedback</button>
+              <button type="button" class="choice-button" data-value="documents">Pitch deck, business plan, or financial data</button>
+              <button type="button" class="choice-button" data-value="traction">Product, website, prototype, customers, or revenue</button>
+            </div>
+            <div class="error" aria-live="polite"></div>
+          </section>
+
+          <section class="screen" data-key="timeline">
+            <h3 class="q-title">How soon do you need support?</h3>
+            <div class="choice-list">
+              <button type="button" class="choice-button" data-value="1-week">Within 1 week</button>
+              <button type="button" class="choice-button" data-value="1-2-weeks">Within 1â€“2 weeks</button>
+              <button type="button" class="choice-button" data-value="3-plus-weeks">3 weeks or more</button>
+              <button type="button" class="choice-button" data-value="exploring">Just exploring for now</button>
+            </div>
+            <div class="error" aria-live="polite"></div>
+          </section>
+
+          <section class="screen" data-key="consent">
+            <h3 class="q-title">Review and submit</h3>
+            <p class="q-help">Please review your answers and confirm that V2 may use your details to respond to this enquiry.</p>
+            <div class="summary" id="summary"></div>
+            <div class="consent" style="margin-top:16px">
+              <input type="checkbox" id="consentBox">
+              <label for="consentBox">I agree that V2 may use the information submitted to review and respond to my enquiry. I have not included highly confidential or proprietary documents or information. <button type="button" id="privacyOpen" style="border:0;background:none;text-decoration:underline;cursor:pointer">Privacy notice</button></label>
+            </div>
+            <div class="error" aria-live="polite"></div>
+          </section>
+
+          <section class="screen" data-key="success">
+            <div class="success">
+              <div class="tick">âœ“</div>
+              <h3 class="q-title" id="successTitle">Your enquiry is ready. Send it to V2 now.</h3>
+              <p class="q-help" id="successHelp">Choose Email or WhatsApp below. Your answers are already written into the message, so you only need to press send.</p>
+              <div class="send-row">
+                <a class="btn btn-primary" id="sendEmail" href="#" target="_blank" rel="noopener">Send by Email</a>
+                <a class="btn btn-teal" id="sendWhatsApp" href="#" target="_blank" rel="noopener">Send by WhatsApp</a>
+              </div>
+              <p class="send-note">V2 will review the requirement and contact you using the details provided. If neither option opens on your device, email <a href="mailto:v2-consulting@hotmail.com">v2-consulting@hotmail.com</a> directly.</p>
+            </div>
+          </section>
+
+          <div class="nav-row" id="navRow">
+            <button type="button" class="btn back" id="backBtn" disabled>Back</button>
+            <button type="button" class="btn btn-primary next" id="nextBtn">Next</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="why">
+    <div class="wrap">
+      <h2>Why clients choose V2</h2>
+      <div class="benefit-grid">
+        <article class="mini"><div class="icon">âœ“</div><h3>Honest assessment</h3><p>Clear, evidence-based guidance without unnecessary reassurance.</p></article>
+        <article class="mini"><div class="icon">â—Ž</div><h3>Senior one-on-one attention</h3><p>Every engagement is led personally by an experienced operator and founder.</p></article>
+        <article class="mini"><div class="icon">â–¦</div><h3>Financial discipline</h3><p>Traceable assumptions, sound logic, and investor-grade outputs.</p></article>
+        <article class="mini"><div class="icon">â†’</div><h3>Practical execution focus</h3><p>Recommendations designed to support real decisions and implementation.</p></article>
+      </div>
+      <div class="notice"><b>Privacy note:</b> Information submitted through this form is used only to review and respond to your enquiry, in line with the Digital Personal Data Protection Act, 2023. Please do not share highly confidential or proprietary documents through this page.</div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span><b>No equity. No success fee. No cheerleading.</b></span>
+    <span>Bangalore, India â€¢ v2-consulting@hotmail.com â€¢ WhatsApp +91 84315 49220</span>
+    <span>Â© 2026 V2 Startup Incubation Consultancy. All rights reserved.</span>
+  </div>
+</footer>
+
+<dialog id="privacyDialog">
+  <div class="modal-body">
+    <h3>Privacy notice</h3>
+    <p>The information entered in this enquiry form is intended only for assessing and responding to your request, and is handled in line with the Digital Personal Data Protection Act, 2023. Do not upload or enter confidential technical information, proprietary business documents, passwords, payment details, or sensitive personal data.</p>
+    <button class="btn btn-primary" id="privacyClose">Close</button>
+  </div>
+</dialog>
+
+<script>
+/*
+  DEPLOYMENT CONFIGURATION
+  Primary delivery: prefilled Email and WhatsApp handoff from the success screen.
+  Optional backend: set submissionEndpoint to the production API or webhook URL
+  (for example, the backend behind https://v2-form.vercel.app/). The endpoint
+  should accept a JSON POST and return a 2xx status. The Email and WhatsApp
+  buttons remain available either way as a redundant delivery channel.
+*/
+const CONFIG = {
+  submissionEndpoint: "",
+  contactEmail: "v2-consulting@hotmail.com",
+  whatsAppNumber: "918431549220"
+};
+
+const dynamicSets = {
+  validate: {
+    title: "What are you most uncertain about?",
+    options: [["market-demand","Market demand"],["target-customer","Target customer"],["competition","Competition"],["commercial-viability","Commercial viability"],["not-sure","Not sure yet"]]
+  },
+  build: {
+    title: "Where do you need the most support?",
+    options: [["business-model","Business model"],["pricing","Pricing"],["gtm","Go-to-market strategy"],["financial-planning","Financial planning"],["roadmap","Execution roadmap"]]
+  },
+  improve: {
+    title: "Which area needs the most improvement?",
+    options: [["pmf","Product-market fit"],["pricing","Pricing"],["gtm-sales","GTM and sales"],["financial-performance","Financial performance"],["operating-model","Operating model"]]
+  },
+  investor: {
+    title: "What investor-ready support do you need?",
+    options: [["pitch-deck","Pitch deck"],["financial-model","Five-year financial model"],["valuation","Valuation"],["fundraise-strategy","Fundraise strategy"],["complete-package","Complete investor-readiness package"]]
+  },
+  bespoke: {
+    title: "What type of bespoke support do you need?",
+    options: [["market-competition","Market and competitor research"],["pricing-commercial","Pricing and commercial strategy"],["gtm-partner-channel","GTM, partner, or channel strategy"],["business-case","Business case or feasibility assessment"],["other","Other custom requirement"]]
+  }
+};
+
+const routingTags = {
+  validate:"IGNITE_DECISION_LAB",
+  build:"BLUEPRINT_BUILD",
+  improve:"BLUEPRINT_BUILD_CUSTOM",
+  investor:"INVESTOR_READY_PRO",
+  bespoke:"BESPOKE_CONSULTANCY"
+};
+
+const standardFlow = ["contact","need","description","dynamic","stage","customer","readiness","timeline","consent","success"];
+const bespokeFlow = ["contact","need","description","dynamic","timeline","consent","success"];
+
+const state = {
+  currentIndex: 0,
+  flow: ["contact","need"],
+  answers: {},
+  labels: {}
+};
+
+const form = document.getElementById("enquiryForm");
+const screens = [...document.querySelectorAll(".screen")];
+const nextBtn = document.getElementById("nextBtn");
+const backBtn = document.getElementById("backBtn");
+const navRow = document.getElementById("navRow");
+const stepLabel = document.getElementById("stepLabel");
+const progressBar = document.getElementById("progressBar");
+
+function currentKey(){ return state.flow[state.currentIndex]; }
+function currentScreen(){ return document.querySelector(`.screen[data-key="${currentKey()}"]`); }
+
+function selectChoice(container, button){
+  container.querySelectorAll(".choice-button").forEach(b => b.classList.remove("selected"));
+  button.classList.add("selected");
+  state.answers[currentKey()] = button.dataset.value;
+  state.labels[currentKey()] = button.textContent.trim();
+  currentScreen().querySelector(".error").textContent = "";
+}
+
+document.querySelectorAll(".screen .choice-list").forEach(list => {
+  list.addEventListener("click", e => {
+    const btn = e.target.closest(".choice-button");
+    if(btn) selectChoice(list, btn);
+  });
+});
+
+function configureRoute(){
+  const need = state.answers.need;
+  state.flow = need === "bespoke" ? [...bespokeFlow] : [...standardFlow];
+  document.getElementById("descriptionTitle").textContent =
+    need === "bespoke"
+      ? "Describe the business or project requirement in one short sentence."
+      : "Describe your idea or business in one short sentence.";
+
+  const set = dynamicSets[need];
+  document.getElementById("dynamicTitle").textContent = set.title;
+  const holder = document.getElementById("dynamicChoices");
+  holder.innerHTML = set.options.map(([value,label]) =>
+    `<button type="button" class="choice-button" data-value="${value}">${label}</button>`
+  ).join("");
+  holder.onclick = e => {
+    const btn = e.target.closest(".choice-button");
+    if(btn) selectChoice(holder, btn);
+  };
+}
+
+function validateCurrent(){
+  const key = currentKey();
+  const screen = currentScreen();
+  const error = screen.querySelector(".error");
+  error.textContent = "";
+
+  if(key === "contact"){
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const phoneOk = /^[+()\-\s0-9]{7,20}$/.test(phone);
+    if(!name || !emailOk || !phoneOk){
+      error.textContent = "Please enter your name, a valid email address, and a valid phone number.";
+      return false;
+    }
+    state.answers.contact = {name,email,phone};
+    return true;
+  }
+
+  if(key === "description"){
+    const value = document.getElementById("description").value.trim();
+    if(value.length < 10){
+      error.textContent = "Please provide a short description of at least 10 characters.";
+      return false;
+    }
+    state.answers.description = value;
+    return true;
+  }
+
+  if(["need","dynamic","stage","customer","readiness","timeline"].includes(key)){
+    if(!state.answers[key]){
+      error.textContent = "Please select one option.";
+      return false;
+    }
+    return true;
+  }
+
+  if(key === "consent"){
+    if(!document.getElementById("consentBox").checked){
+      error.textContent = "Please confirm your consent before submitting.";
+      return false;
+    }
+    return true;
+  }
+  return true;
+}
+
+function summaryText(forClient){
+  const a = state.answers;
+  const l = state.labels;
+  const lines = [
+    `Name: ${a.contact?.name || ""}`,
+    `Email: ${a.contact?.email || ""}`,
+    `Phone: ${a.contact?.phone || ""}`,
+    `Current need: ${l.need || ""}`,
+    `Description: ${a.description || ""}`,
+    `Primary support area: ${l.dynamic || ""}`,
+    l.stage ? `Current stage: ${l.stage}` : null,
+    l.customer ? `Intended customer: ${l.customer}` : null,
+    l.readiness ? `Available material: ${l.readiness}` : null,
+    `Timeline: ${l.timeline || ""}`
+  ];
+  if(!forClient) lines.push(`Reference code: ${routingTags[a.need] || ""}`);
+  return lines.filter(Boolean).join("\n");
+}
+
+function payload(){
+  return {
+    submittedAt: new Date().toISOString(),
+    source: "V2 website enquiry assistant",
+    route: state.answers.need,
+    routingTag: routingTags[state.answers.need],
+    answers: state.answers,
+    answerLabels: state.labels
+  };
+}
+
+function prepareSendLinks(){
+  const a = state.answers;
+  const body = "New V2 enquiry\n\n" + summaryText(false) + "\n\nSubmitted: " + new Date().toLocaleString();
+  const subject = `V2 Enquiry â€” ${a.contact?.name || "New client"}`;
+  document.getElementById("sendEmail").href =
+    `mailto:${CONFIG.contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  document.getElementById("sendWhatsApp").href =
+    `https://wa.me/${CONFIG.whatsAppNumber}?text=${encodeURIComponent(body)}`;
+}
+
+async function submitEnquiry(){
+  const data = payload();
+  try{ localStorage.setItem("v2_latest_enquiry", JSON.stringify(data)); }catch(e){}
+  if(CONFIG.submissionEndpoint){
+    const response = await fetch(CONFIG.submissionEndpoint,{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify(data)
+    });
+    if(!response.ok) throw new Error("Submission failed");
+    document.getElementById("successTitle").textContent = "Thank you. Your enquiry has been recorded.";
+    document.getElementById("successHelp").textContent = "You can also send a copy by Email or WhatsApp if you would like a direct confirmation.";
+  }
+  prepareSendLinks();
+}
+
+function render(){
+  screens.forEach(s => s.classList.remove("active"));
+  currentScreen().classList.add("active");
+
+  const key = currentKey();
+  const isSuccess = key === "success";
+  navRow.style.display = isSuccess ? "none" : "flex";
+  backBtn.disabled = state.currentIndex === 0;
+
+  const questionFlow = state.flow.filter(k => !["consent","success"].includes(k));
+  const qIndex = questionFlow.indexOf(key);
+  const total = questionFlow.length;
+  if(key === "consent"){
+    stepLabel.textContent = "Review before submission";
+    progressBar.style.width = "100%";
+    document.getElementById("summary").textContent = summaryText(true);
+    nextBtn.textContent = "Submit enquiry";
+  } else if(isSuccess){
+    stepLabel.textContent = "Completed";
+    progressBar.style.width = "100%";
+  } else {
+    const shownIndex = qIndex >= 0 ? qIndex + 1 : 1;
+    stepLabel.textContent = state.answers.need ? `Step ${shownIndex} of ${total}` : `Step ${shownIndex}`;
+    progressBar.style.width = `${Math.max(8,(shownIndex/Math.max(total,1))*100)}%`;
+    nextBtn.textContent = "Next";
+  }
+}
+
+nextBtn.addEventListener("click", async () => {
+  if(!validateCurrent()) return;
+  if(currentKey() === "need"){
+    const oldRoute = state.flow.includes("stage") ? "standard" : state.flow.includes("timeline") ? "bespoke" : null;
+    configureRoute();
+    const newRoute = state.answers.need === "bespoke" ? "bespoke" : "standard";
+    if(oldRoute && oldRoute !== newRoute){
+      ["description","dynamic","stage","customer","readiness","timeline"].forEach(k => { delete state.answers[k]; delete state.labels[k]; });
+      document.getElementById("description").value = "";
+    }
+  }
+  if(currentKey() === "consent"){
+    nextBtn.disabled = true;
+    nextBtn.textContent = "Submittingâ€¦";
+    try{
+      await submitEnquiry();
+      state.currentIndex++;
+      render();
+    }catch(err){
+      prepareSendLinks();
+      currentScreen().querySelector(".error").textContent = "The enquiry could not be submitted automatically. Please use the Email or WhatsApp option on the next screen, or write to " + CONFIG.contactEmail + ".";
+      state.currentIndex++;
+      render();
+    }finally{
+      nextBtn.disabled = false;
+      nextBtn.textContent = "Submit enquiry";
+    }
+    return;
+  }
+  state.currentIndex++;
+  render();
+});
+
+backBtn.addEventListener("click", () => {
+  if(state.currentIndex > 0){
+    state.currentIndex--;
+    render();
+  }
+});
+
+document.getElementById("privacyOpen").addEventListener("click",()=>document.getElementById("privacyDialog").showModal());
+document.getElementById("privacyClose").addEventListener("click",()=>document.getElementById("privacyDialog").close());
+
+render();
+</script>
+</body>
+</html>
+

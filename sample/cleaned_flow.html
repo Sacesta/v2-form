@@ -1,0 +1,256 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Internal routing specification for the V2 Startup Incubation Consultancy enquiry chatbot. Not for client distribution.">
+  <title>V2 Chatbot Flow Specification (Internal)</title>
+  <style>
+    :root{
+      --ink:#16181D; --ink2:#1F232B; --orange:#E8490F; --orange2:#FF6B33;
+      --teal:#00A896; --teal2:#36CDBB;
+      --paper:#F7F8FA; --white:#fff; --muted:#696D75; --line:#E3E5E9;
+      --ok:#0E7A5F; --shadow:0 14px 35px rgba(17,19,23,.12);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:linear-gradient(180deg,#F1F3F6,#fff 38%);color:var(--ink)}
+    .internal-banner{background:var(--orange);color:#fff;text-align:center;font-weight:800;letter-spacing:.08em;font-size:13px;padding:9px 16px;text-transform:uppercase}
+    .topbar{
+      background:radial-gradient(circle at 20% 0%,#2A2F38 0,#16181D 45%,#0E0F12 100%);
+      color:white;padding:22px clamp(20px,4vw,64px);display:flex;align-items:center;gap:24px;
+      border-bottom:3px solid var(--orange);
+    }
+    .logo-chip{background:#fff;border-radius:12px;padding:6px;display:grid;place-items:center;flex:0 0 auto}
+    .logo-chip img{width:84px;height:84px;object-fit:contain;display:block}
+    .topbar h1{font-size:clamp(28px,4vw,46px);margin:0 0 8px}
+    .topbar p{margin:0;color:#C9CCD2}
+    main{max-width:1440px;margin:auto;padding:34px clamp(16px,3vw,42px) 64px}
+    .legend{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+    .pill{border:1px solid var(--line);background:white;border-radius:999px;padding:8px 13px;font-size:13px}
+    .pill.accent{border-color:var(--teal);background:#E9F8F5}
+    .pill.warn{border-color:var(--orange);background:#FFF3EE}
+    .card{background:white;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
+    .contact{max-width:480px;margin:0 auto 22px;padding:20px;text-align:center}
+    .contact b{display:block;font-size:18px;margin-bottom:5px}
+    .arrow{height:32px;display:flex;justify-content:center;align-items:center;font-size:28px;color:var(--orange)}
+    .decision{padding:25px;background:var(--ink);color:white;border-radius:18px}
+    .decision h2{margin:0 0 18px;text-align:center;font-size:clamp(20px,2.5vw,30px)}
+    .choices{display:grid;grid-template-columns:repeat(5,minmax(160px,1fr));gap:12px}
+    .choice{background:#262B34;border:1px solid #4A505B;border-radius:14px;padding:18px;min-height:145px}
+    .choice strong{display:inline-flex;width:30px;height:30px;border-radius:50%;background:var(--orange);color:#fff;align-items:center;justify-content:center;margin-bottom:12px}
+    .choice p{margin:0;line-height:1.42}
+    .route-note{text-align:center;margin:14px 0 0;color:#DDE0E4;font-size:13px}
+    .branches{display:grid;grid-template-columns:minmax(0,2fr) minmax(320px,1fr);gap:22px;margin-top:24px}
+    .branch{overflow:hidden}
+    .branch-head{padding:18px 22px;background:var(--ink);color:#fff}
+    .branch-head.accent{background:linear-gradient(135deg,#00766A,var(--teal));color:#fff}
+    .branch-head h3{margin:0;font-size:23px}
+    .branch-head p{margin:5px 0 0;opacity:.86}
+    .steps{padding:20px;display:grid;gap:14px}
+    .step{border:1px solid var(--line);border-radius:14px;padding:16px;background:#fff}
+    .step-title{display:flex;gap:12px;align-items:flex-start}
+    .badge{flex:0 0 auto;background:var(--ink);color:var(--orange2);border-radius:9px;padding:7px 9px;font-weight:800}
+    .bespoke .badge{background:var(--teal);color:#fff}
+    .step h4{margin:2px 0 8px;font-size:17px}
+    .step p{margin:0;color:var(--muted);line-height:1.45}
+    .options{display:grid;grid-template-columns:repeat(5,minmax(115px,1fr));gap:8px;margin-top:13px}
+    .options.four{grid-template-columns:repeat(4,minmax(130px,1fr))}
+    .options.two{grid-template-columns:repeat(2,minmax(130px,1fr))}
+    .option{border:1px solid #BFE6E0;background:#F2FBF9;border-radius:10px;padding:10px;text-align:center;font-size:13px;line-height:1.35}
+    .dynamic{border-left:5px solid var(--orange)}
+    .dynamic-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}
+    .dynamic-item{background:#F7F7F8;border:1px solid #E3E3E5;border-radius:10px;padding:12px}
+    .dynamic-item b{display:block;margin-bottom:4px;color:#A33509}
+    .submit{background:var(--ink);color:white;border-radius:12px;padding:15px;text-align:center;font-weight:800}
+    .submit.accent{background:var(--teal);color:#fff}
+    .routing{background:#FFF3EE;border:1px dashed var(--orange);border-radius:12px;padding:14px;font-size:13px;line-height:1.65}
+    .rules{margin-top:24px;padding:24px}
+    .rules h3{margin-top:0}
+    table{width:100%;border-collapse:collapse}
+    th,td{text-align:left;padding:12px;border-bottom:1px solid var(--line);vertical-align:top}
+    th{background:#EFF1F4}
+    code{background:#F1F1F3;padding:2px 5px;border-radius:4px}
+    .footer{max-width:1440px;margin:auto;padding:0 42px 42px;color:var(--muted);font-size:13px}
+    @media(max-width:1050px){
+      .choices{grid-template-columns:repeat(2,1fr)}
+      .choice:last-child{grid-column:1/-1}
+      .branches{grid-template-columns:1fr}
+      .options,.options.four{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:620px){
+      .topbar{align-items:flex-start}
+      .logo-chip img{width:62px;height:62px}
+      .choices,.options,.options.four,.dynamic-grid{grid-template-columns:1fr}
+      .choice:last-child{grid-column:auto}
+      main{padding-inline:12px}
+      table{font-size:12px}
+    }
+  </style>
+</head>
+<body>
+<div class="internal-banner">Internal implementation reference â€” not for client distribution</div>
+<header class="topbar">
+  <span class="logo-chip"><img src="[IMAGE]" alt="V2 Startup Incubation Consultancy logo"></span>
+  <div>
+    <h1>V2 Enquiry Chatbot â€” Functional Flow</h1>
+    <p>Developer-ready routing specification â€¢ Version 2.0 â€¢ June 2026 â€¢ Source of truth: V2_Enquiry_Landing_Page_v02 and V2_Client_Questionnaire_v01</p>
+  </div>
+</header>
+
+<main>
+  <div class="legend">
+    <span class="pill">Public-facing questions use client-friendly language</span>
+    <span class="pill warn">Package names are applied only as internal routing tags</span>
+    <span class="pill accent">Standard route: 8 questions</span>
+    <span class="pill accent">Bespoke route: 5 questions</span>
+    <span class="pill">Brand palette: ink #16181D â€¢ orange #E8490F â€¢ teal #00A896</span>
+  </div>
+
+  <section class="contact card">
+    <b>Q1 â€” Contact details</b>
+    <span>Name â€¢ Email â€¢ Phone</span>
+  </section>
+  <div class="arrow">â†“</div>
+
+  <section class="decision card">
+    <h2>Q2 â€” Which statement best describes your current need?</h2>
+    <div class="choices">
+      <article class="choice"><strong>1</strong><p>I want to validate an idea before investing significant time or money.</p></article>
+      <article class="choice"><strong>2</strong><p>I want to turn an idea into a structured business plan and roadmap.</p></article>
+      <article class="choice"><strong>3</strong><p>I am already building and need help improving strategy, pricing, GTM, or financials.</p></article>
+      <article class="choice"><strong>4</strong><p>I need investor-ready documents and fundraising preparation.</p></article>
+      <article class="choice"><strong>5</strong><p>I need custom consulting for a business, market, product, or new opportunity.</p></article>
+    </div>
+    <p class="route-note"><b>Routing rule:</b> Options 1â€“4 â†’ Standard Startup Flow. Option 5 â†’ Bespoke Fast-Track. Changing the Q2 answer after going back must clear all route-specific answers.</p>
+  </section>
+
+  <section class="branches">
+    <article class="branch card">
+      <header class="branch-head">
+        <h3>Standard Startup Flow</h3>
+        <p>Shown only when Q2 = options 1, 2, 3, or 4</p>
+      </header>
+      <div class="steps">
+        <section class="step">
+          <div class="step-title"><span class="badge">Q3</span><div><h4>Describe your idea or business in one short sentence.</h4><p>Free-text field. Recommended maximum: 300 characters. Minimum 10 characters enforced.</p></div></div>
+        </section>
+
+        <section class="step dynamic">
+          <div class="step-title"><span class="badge">Q4</span><div><h4>Dynamic follow-up based on the Q2 answer</h4><p>Only one of the following option sets is displayed.</p></div></div>
+          <div class="dynamic-grid">
+            <div class="dynamic-item"><b>Q2 = Validate an idea</b>Market demand â€¢ Target customer â€¢ Competition â€¢ Commercial viability â€¢ Not sure yet</div>
+            <div class="dynamic-item"><b>Q2 = Build a business</b>Business model â€¢ Pricing â€¢ GTM â€¢ Financial planning â€¢ Execution roadmap</div>
+            <div class="dynamic-item"><b>Q2 = Improve a startup</b>Product-market fit â€¢ Pricing â€¢ GTM and sales â€¢ Financial performance â€¢ Operating model</div>
+            <div class="dynamic-item"><b>Q2 = Investor-ready</b>Pitch deck â€¢ Five-year financial model â€¢ Valuation â€¢ Fundraise strategy â€¢ Complete package</div>
+          </div>
+        </section>
+
+        <section class="step">
+          <div class="step-title"><span class="badge">Q5</span><div><h4>What stage are you currently at?</h4></div></div>
+          <div class="options">
+            <span class="option">Just an idea</span><span class="option">Research or validation underway</span>
+            <span class="option">Prototype, product, or service exists</span><span class="option">Early users, customers, or revenue</span>
+            <span class="option">Incorporated startup preparing to scale or raise</span>
+          </div>
+        </section>
+
+        <section class="step">
+          <div class="step-title"><span class="badge">Q6</span><div><h4>Who is the intended customer or user?</h4></div></div>
+          <div class="options">
+            <span class="option">Individual consumers</span><span class="option">Small businesses or startups</span>
+            <span class="option">Large companies or institutions</span><span class="option">Government, education, or non-profits</span>
+            <span class="option">Not sure yet</span>
+          </div>
+        </section>
+
+        <section class="step">
+          <div class="step-title"><span class="badge">Q7</span><div><h4>What do you already have ready?</h4></div></div>
+          <div class="options four">
+            <span class="option">Only an idea or nothing yet</span><span class="option">Notes, research, or customer feedback</span>
+            <span class="option">Pitch deck, business plan, or financial data</span><span class="option">Product, website, prototype, customers, or revenue</span>
+          </div>
+        </section>
+
+        <section class="step">
+          <div class="step-title"><span class="badge">Q8</span><div><h4>How soon do you need support?</h4></div></div>
+          <div class="options four">
+            <span class="option">Within 1 week</span><span class="option">Within 1â€“2 weeks</span>
+            <span class="option">3 weeks or more</span><span class="option">Just exploring for now</span>
+          </div>
+        </section>
+
+        <div class="submit">Consent confirmation â†’ Review summary â†’ Send via Email / WhatsApp</div>
+        <div class="routing">
+          <b>Internal routing tags:</b><br>
+          Q2.1 â†’ <code>IGNITE_DECISION_LAB</code><br>
+          Q2.2 â†’ <code>BLUEPRINT_BUILD</code><br>
+          Q2.3 â†’ <code>BLUEPRINT_BUILD_CUSTOM</code><br>
+          Q2.4 â†’ <code>INVESTOR_READY_PRO</code><br><br>
+          Tags never appear on question screens or in the client-facing review summary. They are appended as a
+          <code>Reference code</code> line only inside the delivered Email/WhatsApp message and the JSON payload.
+        </div>
+      </div>
+    </article>
+
+    <article class="branch card bespoke">
+      <header class="branch-head accent">
+        <h3>Bespoke Fast-Track</h3>
+        <p>Skip startup qualification questions</p>
+      </header>
+      <div class="steps">
+        <section class="step">
+          <div class="step-title"><span class="badge">B1</span><div><h4>Describe the business or project requirement in one short sentence.</h4><p>Free-text field. Recommended maximum: 300 characters. Minimum 10 characters enforced.</p></div></div>
+        </section>
+
+        <section class="step">
+          <div class="step-title"><span class="badge">B2</span><div><h4>What type of bespoke support do you need?</h4></div></div>
+          <div class="options two">
+            <span class="option">Market and competitor research</span>
+            <span class="option">Pricing and commercial strategy</span>
+            <span class="option">GTM, partner, or channel strategy</span>
+            <span class="option">Business case or feasibility assessment</span>
+            <span class="option">Other custom requirement</span>
+          </div>
+        </section>
+
+        <section class="step">
+          <div class="step-title"><span class="badge">B3</span><div><h4>How soon do you need support?</h4></div></div>
+          <div class="options two">
+            <span class="option">Within 1 week</span><span class="option">Within 1â€“2 weeks</span>
+            <span class="option">3 weeks or more</span><span class="option">Just exploring for now</span>
+          </div>
+        </section>
+
+        <div class="submit accent">Consent confirmation â†’ Review summary â†’ Send via Email / WhatsApp</div>
+        <div class="routing"><b>Internal routing tag:</b> <code>BESPOKE_CONSULTANCY</code></div>
+      </div>
+    </article>
+  </section>
+
+  <section class="rules card">
+    <h3>Implementation rules â€” Version 2.0</h3>
+    <table>
+      <tr><th>Requirement</th><th>Developer instruction</th></tr>
+      <tr><td>Delivery (primary)</td><td>On submit, the success screen offers two prefilled handoffs: Email (<code>mailto:v2-consulting@hotmail.com</code>) and WhatsApp (<code>https://wa.me/918431549220</code>). The message body contains all answers using their display labels plus the <code>Reference code</code> line. This works with zero backend.</td></tr>
+      <tr><td>Delivery (backend)</td><td>When the backend behind <code>https://v2-form.vercel.app/</code> is available, set <code>CONFIG.submissionEndpoint</code>. The page POSTs structured JSON (values, labels, routing tag, ISO timestamp) and expects a 2xx. Email/WhatsApp buttons remain visible as a redundant channel. On POST failure, the page falls through to the Email/WhatsApp handoff rather than blocking the client.</td></tr>
+      <tr><td>Progress indicator</td><td>After Q2, calculate the total dynamically: 8 questions for Standard and 5 for Bespoke.</td></tr>
+      <tr><td>Validation</td><td>Name, valid email, and Indian/international phone format are mandatory. One answer is mandatory on every choice screen. Free-text minimum 10 characters.</td></tr>
+      <tr><td>Navigation</td><td>Provide Back and Next controls. Returning to Q2 and changing the route must clear all route-specific answers and labels.</td></tr>
+      <tr><td>Review summary</td><td>The consent screen shows answers using display labels, never internal values or routing tags.</td></tr>
+      <tr><td>Privacy</td><td>Require consent before submission. Reference the DPDP Act 2023. Do not invite confidential documents or proprietary information through the chatbot.</td></tr>
+      <tr><td>Branding</td><td>Ink #16181D background tones, orange #E8490F primary action, teal #00A896 secondary action, white typography. Logo embedded as base64 so pages work as standalone URLs with no external assets.</td></tr>
+      <tr><td>Mobile</td><td>Single-column layout, minimum 44 px tap targets, sticky Next button, no horizontal scrolling.</td></tr>
+      <tr><td>Analytics</td><td>Track start, Q2 route selected, step completion, abandonment step, and successful submission without capturing sensitive free text.</td></tr>
+    </table>
+  </section>
+</main>
+
+<footer class="footer">
+  V2 Startup Incubation Consultancy â€¢ Bangalore, India â€¢ Internal implementation reference â€¢ Version 2.0 â€¢ June 2026
+</footer>
+</body>
+</html>
+
