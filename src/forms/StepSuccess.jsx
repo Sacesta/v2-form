@@ -3,7 +3,7 @@ export default function StepSuccess({ answers, labels, routingTag, backendSucces
   const lines = [
     `Name: ${answers.contact?.name || ""}`,
     `Email: ${answers.contact?.email || ""}`,
-    `Phone: ${answers.contact?.phone || ""}`,
+    `Phone: ${(answers.contact?.phonePrefix && answers.contact?.phone) ? `${answers.contact.phonePrefix} ${answers.contact.phone}` : answers.contact?.phone || ""}`,
     `Current need: ${labels.need || ""}`,
     `Description: ${answers.description || ""}`,
     `Primary support area: ${labels.dynamic || ""}`,

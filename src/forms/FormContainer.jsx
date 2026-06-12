@@ -89,7 +89,7 @@ export default function FormContainer({ onSubmitSuccess, openPrivacy }) {
     const payload = {
       name: answers.contact?.name || "",
       email: answers.contact?.email || "",
-      phone: answers.contact?.phone || "",
+      phone: (answers.contact?.phonePrefix && answers.contact?.phone) ? `${answers.contact.phonePrefix} ${answers.contact.phone}` : answers.contact?.phone || "",
       routingTag: routingTags[answers.need],
       current_need: labels.need || "",
       description: answers.description || "",
